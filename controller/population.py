@@ -1,4 +1,5 @@
 import time
+
 from flask import Blueprint, render_template, redirect, url_for, request
 from controller.authentication import is_authenticated
 import view.population as view

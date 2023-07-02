@@ -18,32 +18,32 @@
         <!-- Text input -->
         <div class="form-label mb-4">
             <label class="form-label" for="houseNumber">Số nhà</label>
-            <input type="text" id="houseNumber" name="houseNumber" class="form-control" />
+            <input type="text" id="houseNumber" name="houseNumber" class="form-control" required/>
         </div>
 
         <div class="form-label mb-4">
             <label class="form-label" for="street">Đường, Hẻm</label>
-            <input type="text" id="street" name="street" class="form-control" />
+            <input type="text" id="street" name="street" class="form-control" required/>
         </div>
 
         <div class="form-label mb-4">
             <label class="form-label" for="commune">Phường, Xã</label>
-            <input type="text" id="commune" name="commune" class="form-control" />
+            <input type="text" id="commune" name="commune" class="form-control" required/>
         </div>
 
         <div class="form-label mb-4">
             <label class="form-label" for="district">Quận, Huyện</label>
-            <input type="text" id="district" name="district" class="form-control" />
+            <input type="text" id="district" name="district" class="form-control" required/>
         </div>
 
         <div class="form-label mb-4">
             <label class="form-label" for="province">Tỉnh, Thành phố</label>
-            <input type="text" id="province" name="province" class="form-control" />
+            <input type="text" id="province" name="province" class="form-control" required/>
         </div>
 
         <div class="form-label mb-4">
             <label class="form-label" for="registerDate">Ngày đăng ký</label>
-            <input type="text" id="registerDate" name="registerDate" placeholder="yyyy-mm-dd" value="{{ today }}" class="form-control" />
+            <input type="text" id="registerDate" name="registerDate" placeholder="yyyy-mm-dd" value="{{ today }}" class="form-control" required/>
         </div>
 
         <div class="row mb-4">
@@ -56,12 +56,12 @@
             <div class="col">
                 <div class="form-label">
                     <label class="form-label" for="householderId">Mã nhân khẩu</label>
-                    <input type="text" id="householderId" name="householderId" class="form-control"/>
+                    <input type="text" id="householderId" name="householderId" class="form-control" required/>
                 </div>
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-rounded m-3">Thêm hộ khẩu mới</button>
+        <button type="submit" class="btn btn-outline-primary btn-rounded m-3">Thêm hộ khẩu mới</button>
     </form>
 </div>
 
