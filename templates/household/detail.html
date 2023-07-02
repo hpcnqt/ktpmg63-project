@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+
+{% block title %} Quản lý hộ khẩu {% endblock %}
+
+{% block content %}
+<div class="mt-4 mx-2">
+    <h3>Lưu thành công hộ khẩu</h3>
+    <form>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-label">
+                    <label class="form-label" for="householdId">Mã hộ khẩu</label>
+                    <input type="text" id="householdId" class="form-control" value="{{ household.id }}" readonly/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Text input -->
+        <div class="form-label mb-4">
+            <label class="form-label" for="houseNumber">Số nhà</label>
+            <input type="text" id="houseNumber" class="form-control" value="{{ household.house_number }}" readonly/>
+        </div>
+
+        <div class="form-label mb-4">
+            <label class="form-label" for="street">Đường, Hẻm</label>
+            <input type="text" id="street" class="form-control" value="{{ household.street_hamlet }}" readonly/>
+        </div>
+
+        <div class="form-label mb-4">
+            <label class="form-label" for="commune">Phường, Xã</label>
+            <input type="text" id="commune" class="form-control" value="{{ household.commune_ward }}" readonly/>
+        </div>
+
+        <div class="form-label mb-4">
+            <label class="form-label" for="district">Quận, Huyện</label>
+            <input type="text" id="district" class="form-control" value="{{ household.city_district_town }}" readonly/>
+        </div>
+
+        <div class="form-label mb-4">
+            <label class="form-label" for="province">Tỉnh, Thành phố</label>
+            <input type="text" id="province" class="form-control" value="{{ household.province }}" readonly/>
+        </div>
+
+        <div class="form-label mb-4">
+            <label class="form-label" for="registerDate">Ngày đăng ký</label>
+            <input type="text" id="registerDate" class="form-control" value="{{ household.register_date}}" readonly/>
+        </div>
+
+        <div class="form-label mb-4">
+            <label class="form-label" for="updatedDate">Ngày sửa đổi</label>
+            <input type="text" id="updatedDate" class="form-control" value="{{ household.updated_date }}" readonly/>
+        </div>
+
+        <div class="row mb-4">
+            <h5>Thông tin chủ hộ</h5>
+            <div class="col-3">
+                <div class="form-label">
+                    <label class="form-label" for="householderId">Mã nhân khẩu</label>
+                    <input type="text" id="householderId" class="form-control" value="{{ household.householder.id }}" readonly/>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-label">
+                    <label class="form-label" for="householderName">Tên</label>
+                    <input type="text" id="householderName" class="form-control" value="{{ household.householder.full_name }}" readonly/>
+                </div>
+            </div>
+        </div>
+
+
+        {% for i in range(0, len) %}
+
+        <div class="row mb-4">
+            <h5>Các thành viên</h5>
+            <div class="col-3">
+                <div class="form-label">
+                    <label class="form-label" for="populationId">Mã nhân khẩu</label>
+                    <input type="text" id="populationId" class="form-control" value="{{ members[i].id }}" readonly/>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-label">
+                    <label class="form-label" for="populationName">Tên</label>
+                    <input type="text" id="populationName" class="form-control" value="{{ members[i].full_name }}" readonly/>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-label">
+                    <label class="form-label" for="relationship">Quan hệ với chủ hộ</label>
+                    <input type="text" id="relationship" class="form-control" value="{{ household.relationship_with_householder }}" readonly/>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </form>
+    <a href="{{ url_for('household.layout') }}">
+        <button type="button" class="btn btn-outline-primary btn-rounded m-3" data-mdb-ripple-color="dark">Quay về danh sách</button>
+    </a>
+</div>
+
+{% endblock %}

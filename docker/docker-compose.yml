@@ -1,0 +1,20 @@
+services:
+  postgres_ktpmg63_db:
+    build:
+      context: .
+      dockerfile: postgres.dockerfile
+    image: "postgres-ktpmg63-image"
+    container_name: ${PG_CONTAINER_NAME}
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: ${PGDATA}
+    volumes:
+       - db_ktpmg63:/data/postgres-ktpmg63
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+volumes:
+    db_ktpmg63:
+      external: true

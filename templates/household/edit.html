@@ -1,0 +1,193 @@
+{% extends 'layout.html' %}
+
+{% block title %} Quản lý hộ khẩu {% endblock %}
+
+{% block content %}
+<div class="mt-4 mx-2">
+    <h3>Thông tin hộ khẩu</h3>
+    <form method="post">
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-label">
+                    <label class="form-label" for="householdId">Mã hộ khẩu</label>
+                    <input type="text" id="householdId" name="householdId" class="form-control" value="{{ household.id }}" readonly/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Text input -->
+        <div class="form-label mb-4">
+            <label class="form-label" for="houseNumber">Số nhà</label>
+            <input type="text" id="houseNumber" name="houseNumber" class="form-control" value="{{ household.house_number }}" />
+        </div>
+
+        <div class="form-label mb-4">
+            <label class="form-label" for="street">Đường, Hẻm</label>
+            <input type="text" id="street" name="street" class="form-control" value="{{ household.street_hamlet }}" />
+        </div>
+
+        <div class="form-label mb-4">
+            <label class="form-label" for="commune">Phường, Xã</label>
+            <input type="text" id="commune" name="commune" class="form-control" value="{{ household.commune_ward }}" />
+        </div>
+
+        <div class="form-label mb-4">
+            <label class="form-label" for="district">Quận, Huyện</label>
+            <input type="text" id="district" name="district" class="form-control" value="{{ household.city_district_town }}" />
+        </div>
+
+        <div class="form-label mb-4">
+            <label class="form-label" for="province">Tỉnh, Thành phố</label>
+            <input type="text" id="province" name="province" class="form-control" value="{{ household.province }}" />
+        </div>
+
+        <div class="form-label mb-4">
+            <label class="form-label" for="registerDate">Ngày đăng ký</label>
+            <input type="text" id="registerDate"  name="registerDate"  placeholder="yyyy-mm-dd" class="form-control" value="{{ household.register_date}}" />
+        </div>
+
+        <div class="form-label mb-4">
+            <label class="form-label" for="updatedDate">Ngày sửa đổi</label>
+            <input type="text" id="updatedDate" name="updatedDate" class="form-control" value="{{ household.updated_date }}" readonly/>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col d-flex ">
+                <h5 class="d-inline mt-2">Thông tin chủ hộ</h5>
+                <button class="btn btn-sm btn-outline-primary mx-3 p-2 btn-rounded" type="button" data-mdb-toggle="modal" data-mdb-target="#modalUpdateHouseholder">Thay đổi</button>
+            </div>
+        </div>
+
+
+        <div class="row mb-4">
+
+            <div class="col-3">
+                <div class="form-label">
+                    <label class="form-label" for="householderId">Mã nhân khẩu</label>
+                    <input type="text" id="householderId" name="householderId" class="form-control" value="{{ household.householder.id }}" readonly/>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-label">
+                    <label class="form-label" for="householderName">Tên</label>
+                    <input type="text" id="householderName" class="form-control" value="{{ household.householder.full_name }}" readonly/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col d-flex ">
+                <h5 class="d-inline mt-2">Thông tin thành viên</h5>
+                <button class="btn btn-sm btn-outline-primary mx-3 p-2 btn-rounded" type="button" data-mdb-toggle="modal" data-mdb-target="#modalUpdateMember">Thêm thành viên</button>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            {% for i in range(0, len) %}
+            <div class="col-3">
+                <div class="form-label">
+                    <label class="form-label" for="populationId">Mã nhân khẩu</label>
+                    <input type="text" id="populationId" class="form-control" value="{{ members[i].id }}" readonly/>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-label">
+                    <label class="form-label" for="populationName">Tên</label>
+                    <input type="text" id="populationName" class="form-control" value="{{ members[i].full_name }}" readonly/>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-label">
+                    <label class="form-label" for="relationship">Quan hệ với chủ hộ</label>
+                    <input type="text" id="relationship" class="form-control" value="{{ household.relationship_with_householder }}" readonly/>
+                </div>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-danger btn-rounded" style="margin: 33px;" data-mdb-toggle="modal" data-mdb-target="#modalRemoveMember">Xoá</button>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-rounded m-3">Lưu thay đổi</button>
+    </form>
+</div>
+
+<div class="modal modal-lg fade" id="modalUpdateHouseholder" tabindex="-1" aria-labelledby="modalUpdateHouseholderLabel"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalUpdateHouseholderLabel">Thay đổi chủ hộ</h5>
+				<button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form method="">
+				<div class="modal-body">
+					<div class="input-group rounded">
+						<input id="householderSearch" type="search" name="householderSearch" class="form-control rounded"
+							placeholder="Mã nhân khẩu" aria-label="Search" aria-describedby="search-addon" />
+						<span class="input-group-text border-0" id="search-addon">
+							<i class="fas fa-search"></i>
+						</span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Đóng</button>
+					<button class="btn btn-primary" type="submit">Thay đổi</button>
+				</div>
+			</form>
+		</div>
+    </div>
+</div>
+
+<div class="modal modal-lg fade" id="modalUpdateMember" tabindex="-1" aria-labelledby="modalUpdateMemberLabel"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalUpdateMemberLabel">Thêm thành viên</h5>
+				<button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form method="">
+				<div class="modal-body">
+					<div class="input-group rounded">
+						<input id="memberSearch" type="search" name="memberSearch" class="form-control rounded"
+							placeholder="Mã nhân khẩu" aria-label="Search" aria-describedby="search-addon-1" />
+						<span class="input-group-text border-0" id="search-addon-1">
+							<i class="fas fa-search"></i>
+						</span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Đóng</button>
+					<button class="btn btn-primary" type="submit">Thêm</button>
+				</div>
+			</form>
+		</div>
+    </div>
+</div>
+
+<div class="modal modal-lg fade" id="modalRemoveMember" tabindex="-1" aria-labelledby="modalRemoveMemberLabel"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalRemoveMemberLabel">Xác nhận xoá thành viên</h5>
+				<button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form method="">
+				<div class="modal-body">
+					<div class="input-group rounded">
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Đóng</button>
+					<button class="btn btn-primary" type="submit">Xoá</button>
+				</div>
+			</form>
+		</div>
+    </div>
+</div>
+
+{% endblock %}
