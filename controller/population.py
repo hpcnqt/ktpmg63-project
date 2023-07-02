@@ -21,6 +21,13 @@ def layout():
     else:
         return redirect(url_for('authentication.login'))
 
+@population_bp.route('/population/add')
+def add():
+    if is_authenticated():
+        return render_template('population/add.html')
+    else:
+        return redirect(url_for('authentication.login'))
+
 
 @population_bp.route('/population/edit/<id>')
 def edit(id):
