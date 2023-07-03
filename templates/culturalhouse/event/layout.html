@@ -7,51 +7,81 @@
 	<div class="row">
 		<div class="col-md d-flex">
 			<h3 class="d-inline p-2"> Tổ chức sự kiện </h3>
-			<div class="dropdown p-2 mb-2">
-				<button class="btn btn-primary btn-floating" type="button" id="dropdownMenuButton"
-					data-mdb-toggle="dropdown" aria-expanded="false">
-					<i class="fa-solid fa-magnifying-glass"></i>
+			<div class="p-2 mb-2">
+				<button class="btn btn-outline-primary" type="button" id="dropdownMenuButton">
+					<i class="fa-solid fa-plus"></i>
 				</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<li><a class="dropdown-item" href="" data-mdb-toggle="modal"
-							data-mdb-target="#modalHouseholdSearch">Số điện thoại người đăng ký</a>
-					</li>
-				</ul>
 			</div>
 		</div>
 	</div>
+
+	<div class="input-group mb-3">
+  		<input type="search" class="form-control rounded" placeholder="Số điện thoại người đăng ký" aria-label="search" aria-describedby="search-addon" />
+  		<button type="button" class="btn btn-outline-primary">Tìm kiếm</button>
+	</div>
+
 	<table class="table align-middle mb-0 bg-white">
 		<thead class="bg-light">
 			<tr>
 				<th>Tên sự kiện</th>
-				<th>Người đăng ký</th>
+				<th>Ngày tổ chức</th>
 				<th>Thông tin liên lạc</th>
 				<th>Địa điểm</th>
 				<th>Phí sự kiện</th>
+				<th>Trạng thái</th>
 				<th>Phê duyệt</th>
+				<th>Chỉnh sửa</th>
 			</tr>
 		</thead>
 		<tbody>
-<!--			{% for i in range(0, len) %}-->
+			{% if len == 0 %}
+				<tr>
+					<td>
+						<p>Không có dữ liệu</p>
+					</td>
+				</tr>
+			{% endif %}
+
+			{% if len > 0 %}
+			{% for i in range(0, len) %}
 			<tr>
 				<td>
-<!--					{{ households[i].id }}-->
+					{{ events[i].name }}
 				</td>
 				<td>
-<!--					{{ households[i].householder.full_name }}-->
+					{{ events[i].from_time }}
 				</td>
 				<td>
-<!--					{{ households[i].house_number }}-->
+					{{ events[i].owner + ' (' + events[i].owner_contact + ')' }}
 				</td>
 				<td>
+					{{ events[i].department.name }}
+				<td>
+					{{ events[i].fee }}
+				</td>
+				<td>
+					{% if events[i].status == 0 %} Chưa phê duyệt {% endif %}
+					{% if events[i].status == 1 %} Đã phê duyệt {% endif %}
+				</td>
+				<td>
+					{% if events[i].status == 0 %}
 					<a href="">
-						<button type="button" class="btn btn-link btn-sm btn-rounded">
-							Chỉnh sửa
+						<button type="button" class="btn btn-outline-success btn-sm btn-rounded">
+							Duyêt
+						</button>
+					</a>
+					{% endif %}
+				</td>
+				<td>
+					<a href="{{ url_for('event.edit', id=events[i].id) }}">
+						<button type="button" class="btn btn-outline-primary btn-sm btn-rounded">
+							<i class="fa-solid fa-pen"></i>
 						</button>
 					</a>
 				</td>
 			</tr>
-<!--			{% endfor %}-->
+			{% endfor %}
+			{% endif %}
 		</tbody>
 	</table>
 </div>
