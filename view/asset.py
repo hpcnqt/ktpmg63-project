@@ -21,3 +21,6 @@ def total():
 
 def update(asset):
     return modal.update(asset=asset)
+
+def create(asset):
+    return modal.insert(asset=asset)

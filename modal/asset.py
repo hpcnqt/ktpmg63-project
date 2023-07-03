@@ -15,6 +15,10 @@ class Asset(Base):
         self.name = name
         self.qty = qty
 
+    def __init__(self, name, qty):
+        self.name = name
+        self.qty = qty
+
 
 def find_all():
     try:
@@ -76,3 +80,15 @@ def find_by_id(id):
         return result
     except NoResultFound:
         return None
+    
+
+def insert(asset):
+    try:
+        session = Session()
+        session.add(asset)
+
+        session.commit()
+        session.close()
+    except SQLAlchemyError as e:
+        session.rollback()
+        print("An error occurred:", str(e))

@@ -47,3 +47,26 @@ def find_by_id(id):
     except SQLAlchemyError as e:
         session.rollback()
         print("An error occurred:", str(e))
+
+def total():
+    try:
+        session = Session()
+        result = session.query(Event).count()
+
+        session.close()
+
+        return result
+    except SQLAlchemyError as e:
+        session.rollback()
+        print("An error occurred:", str(e))
+
+def insert(event):
+    try:
+        session = Session()
+        session.add(event)
+
+        session.commit()
+        session.close()
+    except SQLAlchemyError as e:
+        session.rollback()
+        print("An error occurred:", str(e))
