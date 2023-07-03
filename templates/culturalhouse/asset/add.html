@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %} Quản lý trang thiết bị {% endblock %}
+
+{% block content %}
+<div class="mt-4 mx-2">
+    <h3>Thông tin thiết bị</h3>
+    <form method="post">
+        <div class="row mb-4">     
+            <div class="form-label">
+                <label class="form-label" for="assetId">Mã thiết bị</label>
+                <input type="text" id="assetName" name="assetId" class="form-control" value="{{assetId}}" required/>
+            </div>     
+            <div class="form-label">
+                <label class="form-label" for="assetName">Tên thiết bị</label>
+                <input type="text" id="assetName" name="assetName" class="form-control" value="{{assetName}}" required/>
+            </div>
+
+            <div class="form-label">
+                <label class="form-label" for="assetQty">Số lượng</label>
+                <input type="text" id="assetQty" name="assetQty" class="form-control" value="{{assetQty}}" required/>
+            </div>
+        </div>
+        <div class="form-label mb-4" style="text-align: center;">
+            <button type="submit" class="btn btn-outline-primary btn-rounded">Lưu </button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
