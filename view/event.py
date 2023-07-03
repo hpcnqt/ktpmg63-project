@@ -16,3 +16,19 @@ def find_all():
 
 def find_by_id(id):
     return modal_event.find_by_id(id=id)
+
+
+def update(event):
+    return modal_event.update(event)
+
+
+def create(event):
+    return modal_event.insert(event)
+
+
+def update_status(event):
+    return modal_event.update_status(event)
+
+
+def remove(event):
+    return modal_event.delete(event)

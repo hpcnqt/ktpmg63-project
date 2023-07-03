@@ -18,13 +18,8 @@
             </div>
 
             <div class="form-label">
-                <label class="form-label" for="registerName">Thông tin người đăng ký</label>
-                <input type="text" id="registerName" name="registerName" class="form-control" value="{{ event.owner }}" required/>
-            </div>
-
-            <div class="form-label">
-                <label class="form-label" for="registerContact">Thông tin liên lạc của người đăng ký</label>
-                <select class="form-control" name="department">
+                <label class="form-label" for="department">Phòng tổ chức</label>
+                <select class="form-control" name="department" id="department">
                     {% for i in range(0, len) %}
                         {% if departments[i].id == event.department_id %}
                             <option value="{{ departments[i].id }}" selected>{{ departments[i].name }}</option>
@@ -33,6 +28,11 @@
                         {% endif %}
                     {% endfor %}
                 </select>
+            </div>
+
+            <div class="form-label">
+                <label class="form-label" for="registerName">Thông tin người đăng ký</label>
+                <input type="text" id="registerName" name="registerName" class="form-control" value="{{ event.owner }}" required/>
             </div>
 
             <div class="form-label">
@@ -51,8 +51,17 @@
             </div>
 
             <div class="form-label">
-                <label class="form-label" for="status">Trạng thái</label>
-                <input type="text" id="status" name="status" class="form-control" value="" readonly/>
+                <label class="form-label" for="fee">Phí dịch vụ</label>
+                <input type="text" id="fee" name="fee" class="form-control" value="{{ event.fee }}" required/>
+            </div>
+
+            <div class="form-label">
+                <label class="form-label" for="status1">Trạng thái</label>
+                {% if event.status == 0 %}
+                    <input type="text" id="status0" name="status" class="form-control" value="Chưa phê duyệt" readonly/>
+                {% else %}
+                    <input type="text" id="status1" name="status" class="form-control" value="Đã phê duyệt" readonly/>
+                {% endif %}
             </div>
 
         </div>

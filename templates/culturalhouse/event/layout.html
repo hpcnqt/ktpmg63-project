@@ -8,9 +8,11 @@
 		<div class="col-md d-flex">
 			<h3 class="d-inline p-2"> Tổ chức sự kiện </h3>
 			<div class="p-2 mb-2">
-				<button class="btn btn-outline-primary" type="button" id="dropdownMenuButton">
-					<i class="fa-solid fa-plus"></i>
-				</button>
+				<a href="{{ url_for('event.add') }}">
+					<button class="btn btn-outline-primary" type="button" id="dropdownMenuButton">
+						<i class="fa-solid fa-plus"></i>
+					</button>
+				</a>
 			</div>
 		</div>
 	</div>
@@ -65,7 +67,7 @@
 				</td>
 				<td>
 					{% if events[i].status == 0 %}
-					<a href="">
+					<a href="{{ url_for('event.accept', id=events[i].id) }}">
 						<button type="button" class="btn btn-outline-success btn-sm btn-rounded">
 							Duyêt
 						</button>
@@ -73,11 +75,18 @@
 					{% endif %}
 				</td>
 				<td>
-					<a href="{{ url_for('event.edit', id=events[i].id) }}">
-						<button type="button" class="btn btn-outline-primary btn-sm btn-rounded">
-							<i class="fa-solid fa-pen"></i>
-						</button>
-					</a>
+					<div class="row">
+						<a href="{{ url_for('event.edit', id=events[i].id) }}" class="col">
+							<button type="button" class="btn btn-outline-primary btn-sm btn-rounded">
+								<i class="fa-solid fa-pen"></i>
+							</button>
+						</a>
+						<form action="{{ url_for('event.remove', id=events[i].id) }}" method="post" class="col">
+							<button type="submit" class="btn btn-danger btn-sm btn-rounded">
+								<i class="fa-solid fa-trash"></i>
+							</button>
+						</form>
+					</div>
 				</td>
 			</tr>
 			{% endfor %}

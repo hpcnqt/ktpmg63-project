@@ -7,23 +7,14 @@
     <h3>Thêm sự kiện</h3>
     <form method="post">
         <div class="row mb-4">
-            <div class="form-label">
-                <label class="form-label" for="eventId">Mã sự kiện</label>
-                <input type="text" id="eventId" name="eventId" class="form-control" value=" {{ event.id }}" readonly/>
-            </div>
 
             <div class="form-label">
                 <label class="form-label" for="eventName">Tên sự kiện</label>
-                <input type="text" id="eventName" name="eventName" class="form-control" value="" required/>
+                <input type="text" id="eventName" name="eventName" class="form-control" required/>
             </div>
 
             <div class="form-label">
-                <label class="form-label" for="registerName">Thông tin người đăng ký</label>
-                <input type="text" id="registerName" name="registerName" class="form-control" value="" required/>
-            </div>
-
-            <div class="form-label">
-                <label class="form-label" for="registerContact">Thông tin liên lạc của người đăng ký</label>
+                <label class="form-label" for="registerContact">Phòng tổ chức</label>
                 <select class="form-control" name="department">
                     {% for i in range(0, len) %}
                         <option value="{{ departments[i].id }}">{{ departments[i].name }}</option>
@@ -32,19 +23,31 @@
             </div>
 
             <div class="form-label">
+                <label class="form-label" for="fee">Phí dịch vụ</label>
+                <input type="text" id="fee" name="fee" class="form-control" required/>
+            </div>
+
+            <div class="form-label">
+                <label class="form-label" for="registerName">Thông tin người đăng ký</label>
+                <input type="text" id="registerName" name="registerName" class="form-control" required/>
+            </div>
+
+            <div class="form-label">
                 <label class="form-label" for="registerContact">Thông tin liên lạc của người đăng ký</label>
-                <input type="text" id="registerContact" name="registerContact" class="form-control" value="" required/>
+                <input type="text" id="registerContact" name="registerContact" class="form-control" required/>
             </div>
 
             <div class="form-label">
                 <label class="form-label" for="fromTime">Thời gian bắt đầu</label>
-                <input type="text" id="fromTime" name="fromTime" class="form-control" value="" required/>
+                <input type="text" id="fromTime" name="fromTime" class="form-control" required/>
             </div>
 
             <div class="form-label">
                 <label class="form-label" for="toTime">Thời gian kết thúc</label>
-                <input type="text" id="toTime" name="toTime" class="form-control" value="" required/>
+                <input type="text" id="toTime" name="toTime" class="form-control" required/>
             </div>
+
+
 
         </div>
 

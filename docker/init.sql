@@ -115,7 +115,8 @@ CREATE TABLE event(
 	fee	INT,
 	status SMALLINT,
 	from_time TIMESTAMP,
-	to_time TIMESTAMP, 
+	to_time TIMESTAMP,
+	accepter VARCHAR(255),
 	FOREIGN KEY (department_id) REFERENCES department(id)
 );
 

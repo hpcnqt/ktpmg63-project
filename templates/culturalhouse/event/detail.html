@@ -4,8 +4,8 @@
 
 {% block content %}
 <div class="mt-4 mx-2">
-    <h3>Thông tin sự kiện</h3>
-    <form method="post">
+    <h3>Lưu thành công sự kiện</h3>
+    <form>
         <div class="row mb-4">
             <div class="form-label">
                 <label class="form-label" for="eventId">Mã sự kiện</label>
@@ -14,51 +14,54 @@
 
             <div class="form-label">
                 <label class="form-label" for="eventName">Tên sự kiện</label>
-                <input type="text" id="eventName" name="eventName" class="form-control" value="{{ event.name }}" required/>
+                <input type="text" id="eventName" name="eventName" class="form-control" value="{{ event.name }}" readonly/>
+            </div>
+
+            <div class="form-label">
+                <label class="form-label" for="department">Phòng tổ chức</label>
+                <input type="text" id="department" name="department" class="form-control" value="{{ event.department.name }}" readonly/>
             </div>
 
             <div class="form-label">
                 <label class="form-label" for="registerName">Thông tin người đăng ký</label>
-                <input type="text" id="registerName" name="registerName" class="form-control" value="{{ event.owner }}" required/>
+                <input type="text" id="registerName" name="registerName" class="form-control" value="{{ event.owner }}" readonly/>
             </div>
 
             <div class="form-label">
                 <label class="form-label" for="registerContact">Thông tin liên lạc của người đăng ký</label>
-                <select class="form-control" name="department">
-                    {% for i in range(0, len) %}
-                        {% if departments[i].id == event.department_id %}
-                            <option value="{{ departments[i].id }}" selected>{{ departments[i].name }}</option>
-                        {% else %}
-                            <option value="{{ departments[i].id }}">{{ departments[i].name }}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
-            </div>
-
-            <div class="form-label">
-                <label class="form-label" for="registerContact">Thông tin liên lạc của người đăng ký</label>
-                <input type="text" id="registerContact" name="registerContact" class="form-control" value="{{ event.owner_contact }}" required/>
+                <input type="text" id="registerContact" name="registerContact" class="form-control" value="{{ event.owner_contact }}" readonly/>
             </div>
 
             <div class="form-label">
                 <label class="form-label" for="fromTime">Thời gian bắt đầu</label>
-                <input type="text" id="fromTime" name="fromTime" class="form-control" value="{{ event.from_time }}" required/>
+                <input type="text" id="fromTime" name="fromTime" class="form-control" value="{{ event.from_time }}" readonly/>
             </div>
 
             <div class="form-label">
                 <label class="form-label" for="toTime">Thời gian kết thúc</label>
-                <input type="text" id="toTime" name="toTime" class="form-control" value="{{ event.to_time }}" required/>
+                <input type="text" id="toTime" name="toTime" class="form-control" value="{{ event.to_time }}" readonly/>
             </div>
 
             <div class="form-label">
-                <label class="form-label" for="status">Trạng thái</label>
-                <input type="text" id="status" name="status" class="form-control" value="" readonly/>
+                <label class="form-label" for="fee">Phí dịch vụ</label>
+                <input type="text" id="fee" name="fee" class="form-control" value="{{ event.fee }}" readonly/>
+            </div>
+
+            <div class="form-label">
+                <label class="form-label" for="status1">Trạng thái</label>
+                {% if event.status == 0 %}
+                    <input type="text" id="status0" name="status" class="form-control" value="Chưa phê duyệt" readonly/>
+                {% else %}
+                    <input type="text" id="status1" name="status" class="form-control" value="Đã phê duyệt" readonly/>
+                {% endif %}
             </div>
 
         </div>
 
         <div class="form-label mb-4" style="text-align: center;">
-            <button type="submit" class="btn btn-outline-primary btn-rounded">Lưu thay đổi</button>
+            <a href="{{ url_for('event.layout') }}">
+                <button type="button" class="btn btn-outline-primary btn-rounded">Quản lý sự kiện</button>
+            </a>
         </div>
 
     </form>
