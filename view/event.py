@@ -3,6 +3,10 @@ import modal.event as modal_event
 import modal.department as modal_department
 
 
+def find_all_departments():
+    return modal_department.find_all()
+
+
 def find_all():
     result = dict()
     result['event'] = modal_event.find_all()

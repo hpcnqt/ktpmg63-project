@@ -29,6 +29,7 @@ def edit(id):
 
     if is_authenticated():
         event = view.find_by_id(id)
-        return render_template('culturalhouse/event/edit.html', event=event)
+        departments = view.find_all_departments()
+        return render_template('culturalhouse/event/edit.html', event=event, departments=departments, len=len(departments))
     else:
         return redirect(url_for('authentication.login'))

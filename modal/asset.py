@@ -6,7 +6,7 @@ from database.base import Base, Session
 class Asset(Base):
     __tablename__ = 'asset'
 
-    id = Column(Integer, primary_key = True)
+    id = Column(Integer, primary_key=True)
     name = Column(String)
     qty = Column(SmallInteger)
 
@@ -28,16 +28,18 @@ def find_all():
         session.rollback()
         print("An error occurred:", str(e))
 
+
 def find_by_name(name):
     try:
         session = Session()
         result = session.query(Asset).filter(Asset.name == name).first()
         session.close()
-        
+
         return result
     except NoResultFound:
         return None
-    
+
+
 def total():
     try:
         session = Session()
@@ -49,6 +51,7 @@ def total():
     except SQLAlchemyError as e:
         session.rollback()
         print("An error occurred:", str(e))
+
 
 def update(asset):
     try:
@@ -66,13 +69,12 @@ def update(asset):
         print("An error occurred:", str(e))
 
 
-
 def find_by_id(id):
     try:
         session = Session()
         result = session.query(Asset).filter(Asset.id == id).first()
         session.close()
-        
+
         return result
     except NoResultFound:
         return None
