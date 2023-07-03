@@ -29,22 +29,28 @@
 			</tr>
 		</thead>
 		<tbody>
+            {% for i in range(0, len) %}
 			<tr>
 				<td>
+                    {{ assets[i].name }}
 				</td>
 				<td>
+                    {{ assets[i].qty }}
 				</td>
 				<td>
-					<a href="">
+					<a href="{{ url_for('asset.edit', id=assets[i].id) }}">
 						<button type="button" class="btn btn-outline-primary btn-sm btn-rounded m-2">
 							<i class="fa-solid fa-pencil"></i>
 						</button>
+                    </a>
+                    <a href="">
                         <button type="button" class="btn btn-outline-danger btn-sm btn-rounded m-2">
 							<i class="fa-solid fa-trash"></i>
 						</button>
-					</a>
+                    </a>  
 				</td>
 			</tr>
+            {% endfor %}
 		</tbody>
 	</table>
 </div>

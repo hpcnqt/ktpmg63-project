@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %} Quản lý trang thiết bị {% endblock %}
+
+{% block content %}
+<div class="mt-4 mx-2">
+    <h3>Lưu thành công thiết bị</h3>
+    <form>
+        <div class="row mb-4">
+            <div class="form-label">
+                <label class="form-label" for="assetId">Mã thiết bị</label>
+                <input type="text" id="assetId" name="assetId" class="form-control" value="{{asset.id}}" readonly/>
+            </div>
+            
+            <div class="form-label">
+                <label class="form-label" for="assetName">Tên thiết bị</label>
+                <input type="text" id="assetName" name="assetName" class="form-control" value="{{asset.name}}" readonly/>
+            </div>
+
+            <div class="form-label">
+                <label class="form-label" for="assetQty">Số lượng</label>
+                <input type="text" id="assetQty" name="assetQty" class="form-control" value="{{asset.qty}}" readonly/>
+            </div>
+        </div>
+        
+        <div class="form-label mb-4" style="text-align: center;">
+            <a href="{{ url_for('asset.layout') }}">
+                <button type="button" class="btn btn-outline-primary btn-rounded">Quay lại quản lý thiết bị</button>
+            </a>        
+        </div>
+    </form>
+</div>
+
+{% endblock %}
