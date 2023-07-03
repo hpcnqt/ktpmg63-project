@@ -92,4 +92,39 @@ INSERT INTO household(id, householder_id, house_number, street_hamlet, commune_w
 VALUES ('006002081001', '0060020810001', '125 Binh đoàn 11', 'Hồ Đắc Di', 'Nam Đồng', 'Đống Đa', 'Hà Nội');
 
 
-UPDATE population SET household_id = '006002081001' WHERE id = '0060020810001'
+UPDATE population SET household_id = '006002081001' WHERE id = '0060020810001';
+
+
+CREATE TABLE asset(
+	id		SERIAL PRIMARY KEY,
+	name	VARCHAR(255),
+	qty		SMALLINT
+);
+
+CREATE TABLE department(
+	id 		SERIAL PRIMARY KEY,
+	name	VARCHAR(255)
+);
+
+CREATE TABLE event(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255),
+	owner VARCHAR(255),
+	owner_contact CHAR(10),
+	department_id INT,
+	fee	INT,
+	status SMALLINT,
+	from_time TIMESTAMP,
+	to_time TIMESTAMP, 
+	FOREIGN KEY (department_id) REFERENCES department(id)
+);
+
+INSERT INTO asset(name, qty)
+VALUES ('Bàn', 10),
+	   ('Ghế', 50),
+	   ('Mic', 3),
+	   ('Loa', 5);
+
+
+INSERT INTO department(name)
+VALUES ('Hội trường tầng 1'), ('Phòng chức năng 1'), ('Phòng chức năng 2'), ('Phòng chức năng 3');
