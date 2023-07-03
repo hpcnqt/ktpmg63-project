@@ -17,7 +17,7 @@ def layout():
         if request.method == 'POST':
             id = request.form.get('populationSearch')
             population = view.find_by_id(id)
-            populations = [population['population']]
+            populations = [population]
             return render_template('population/layout.html', len=len(populations), populations=populations)
         else:
             populations = view.find_all()

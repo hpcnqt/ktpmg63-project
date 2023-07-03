@@ -55,7 +55,7 @@
 						</ul>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdd" role="button"
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdd1" role="button"
 							data-mdb-toggle="dropdown" aria-expanded="false">
 							Đăng kí
 						</a>
@@ -80,7 +80,7 @@
 								<a class="dropdown-item" href="{{ url_for('asset.layout') }}">Quản lý thiết bị</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="">Tổ chức sự kiện</a>
+								<a class="dropdown-item" href="{{ url_for('event.layout') }}">Tổ chức sự kiện</a>
 							</li>
 						</ul>
 					</li>
@@ -95,7 +95,7 @@
 				<div class="dropdown">
 					<a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
 						id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-						<p class="align-items-center mt-3 mx-2">{{ username }}</p>
+						<p class="align-items-center mt-3 mx-2">{% block username %}{% endblock %}</p>
 						<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
 							class="rounded-circle" height="25" alt="Default User Avatar" loading="lazy" />
 					</a>
