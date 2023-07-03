@@ -31,7 +31,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<!-- Navbar brand -->
 				<a class="navbar-brand mt-2 mt-lg-0" href="#">
-					<img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15"
+					<img src="/static/GROUP63.png" height="75"
 						alt="MDB Logo" loading="lazy" />
 				</a>
 				<!-- Left links -->
@@ -76,18 +76,15 @@
 
 			<!-- Right elements -->
 			<div class="d-flex align-items-center">
-
 				<!-- Avatar -->
 				<div class="dropdown">
 					<a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
 						id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+						<p class="align-items-center mt-3 mx-2">{{ username }}</p>
 						<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
 							class="rounded-circle" height="25" alt="Default User Avatar" loading="lazy" />
 					</a>
 					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-						<li>
-							<a class="dropdown-item" href="#">Hồ sơ cá nhân</a>
-						</li>
 						<li>
 							<a class="dropdown-item" href="{{ url_for('authentication.logout') }}">Đăng xuất</a>
 						</li>

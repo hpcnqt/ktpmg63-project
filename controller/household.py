@@ -12,6 +12,7 @@ household_bp = Blueprint('household', __name__)
 
 @household_bp.route('/household', methods=['GET', 'POST'])
 def layout():
+    time.sleep(1)
     if is_authenticated():
         if request.method == 'POST':
             id = request.form.get('householdSearch')
@@ -27,6 +28,8 @@ def layout():
 
 @household_bp.route('/household/detail/<id>')
 def detail(id):
+    time.sleep(1)
+
     if is_authenticated():
         household = view.find_by_id(id)
 
@@ -39,6 +42,8 @@ def detail(id):
 
 @household_bp.route('/household/edit/<id>', methods=['GET', 'POST'])
 def edit(id):
+    time.sleep(1)
+
     if is_authenticated():
         household = view.find_by_id(id)
 
@@ -77,6 +82,8 @@ def edit(id):
 
 @household_bp.route('/household/add', methods=['GET', 'POST'])
 def add():
+    time.sleep(1)
+
     if is_authenticated():
         if request.method == 'POST':
             household_id = request.form.get('householdId')

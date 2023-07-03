@@ -11,6 +11,8 @@ population_bp = Blueprint('population', __name__)
 
 @population_bp.route('/population', methods=['GET', 'POST'])
 def layout():
+    time.sleep(1)
+
     if is_authenticated():
         if request.method == 'POST':
             id = request.form.get('populationSearch')
@@ -26,6 +28,8 @@ def layout():
 
 @population_bp.route('/population/edit/<id>', methods=['GET', 'POST'])
 def edit(id):
+    time.sleep(1)
+
     if is_authenticated():
         population = view.find_by_id(id)
 
@@ -62,6 +66,8 @@ def edit(id):
 
 @population_bp.route('/population/detail/<id>')
 def detail(id):
+    time.sleep(1)
+
     if is_authenticated():
         population = view.find_by_id(id)
 
@@ -72,6 +78,8 @@ def detail(id):
 
 @population_bp.route('/population/add', methods=['GET', 'POST'])
 def add():
+    time.sleep(1)
+
     if is_authenticated():
         if request.method == 'POST':
             population_id = request.form.get('populationId')

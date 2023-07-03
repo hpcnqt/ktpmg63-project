@@ -1,4 +1,6 @@
-from flask import Blueprint, render_template, redirect, url_for
+import time
+
+from flask import Blueprint, render_template, redirect, url_for, session
 
 from controller.authentication import is_authenticated
 from view.general import Information
@@ -9,7 +11,9 @@ dashboard_bp = Blueprint('dashboard', __name__)
 @dashboard_bp.route('/')
 def layout():
     if is_authenticated():
+        time.sleep(1)
         information = Information()
-        return render_template('dashboard/layout.html', information=information)
+        username = session['username']
+        return render_template('dashboard/layout.html', information=information, username=username)
     else:
         return redirect(url_for('authentication.login'))

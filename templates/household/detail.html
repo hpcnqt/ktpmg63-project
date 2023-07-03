@@ -93,9 +93,13 @@
         </div>
         {% endfor %}
     </form>
-    <a href="{{ url_for('household.layout') }}">
-        <button type="button" class="btn btn-outline-primary btn-rounded m-3" data-mdb-ripple-color="dark">Quay về danh sách</button>
-    </a>
+
+    <div class="form-label mb-4" style="text-align: center;">
+        <a href="{{ url_for('household.layout') }}">
+            <button type="button" class="btn btn-outline-primary btn-rounded m-3" data-mdb-ripple-color="dark">Quay về quản lý hộ khẩu</button>
+        </a>
+    </div>
+
 </div>
 
 {% endblock %}
