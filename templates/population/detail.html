@@ -4,67 +4,69 @@
 
 {% block content %}
 <div class="mt-4 mx-2">
-    <h3>Thông tin nhân khẩu</h3>
-    <form method="post">
+    <h3>Lưu thành công nhân khẩu</h3>
+    <form>
         <div class="row mb-4">
             <div class="form-label">
-                <label class="form-label" for="populationId">Mã nhân khẩu</label>
+                <label class="form-label" for="populationId">Họ và tên</label>
                 <input type="text" id="populationId" name="populationId" class="form-control" value="{{population.id}}" readonly/>
             </div>
 
             <div class="form-label">
                 <label class="form-label" for="fullName">Họ và tên</label>
-                <input type="text" id="fullName" name="fullName" class="form-control" value="{{population.full_name}}" required/>
+                <input type="text" id="fullName" name="fullName" class="form-control" value="{{population.full_name}}" readonly/>
             </div>
 
             <div class="form-label">
                 <label class="form-label" for="otherName">Tên khác (Không có ghi 'Không')</label>
-                <input type="text" id="otherName" name="otherName" class="form-control" value="{{ population.other_name }}" required/>
+                <input type="text" id="otherName" class="form-control" value="{{ population.other_name }}" readonly/>
             </div>
 
             <div class="form-label">
                 <label class="form-label" for="dateOfBirth">Ngày sinh</label>
-                <input type="text" id="dateOfBirth" name="dateOfBirth" class="form-control" value="{{population.date_of_birth}}" required/>
+                <input type="text" id="dateOfBirth" name="dateOfBirth" class="form-control" value="{{population.date_of_birth}}" readonly/>
             </div>
 
             <div class="form-label">
-                <label class="form-label" for="bornLocation">Nơi sinh</label>
-                <input type="text" id="bornLocation" name="bornLocation"  class="form-control" value="{{population.born_location}}" required/>
+                <label class="form-label" for="born_location">Nơi sinh</label>
+                <input type="text" id="born_location" name="born_location"  class="form-control" value="{{population.born_location}}" readonly/>
             </div>
 
             <div class="form-label">
                 <label class="form-label" for="gender">Giới tính (0: Nam, 1: Nữ)</label>
-                <input type="text" id="gender" name="gender" class="form-control" value="{{population.gender}}" required/>
+                <input type="text" id="gender" class="form-control" value="{{population.gender}}" readonly/>
             </div>
 
             <div class="form-label">
-                <label class="form-label" for="ethnic">Dân tộc (Không có ghi 'Không')</label>
-                <input type="text" id="ethnic" name="ethnic" class="form-control" value="{{population.ethnic}}" required/>
+                <label class="form-label" for="ethnic">Dân tộc</label>
+                <input type="text" id="ethnic" class="form-control" value="{{population.ethnic}}" readonly/>
             </div>
 
             <div class="form-label">
                 <label class="form-label" for="religion">Tôn giáo (Không có ghi 'Không')</label>
-                <input type="text" id="religion" name="religion" class="form-control" value="{{population.religion}}" required/>
+                <input type="text" id="religion" class="form-control" value="{{population.religion}}" readonly/>
             </div>
 
             <div class="form-label">
                 <label class="form-label" for="idNumber">Chứng minh thư, căn cước công dân (Không có ghi 'Không')</label>
-                <input type="text" id="idNumber" name="idNumber" class="form-control" value="{{population.identification_number}}" required/>
+                <input type="text" id="idNumber" name="idNumber" class="form-control" value="{{population.identification_number}}" readonly/>
             </div>
 
             <div class="form-label mb-4">
                 <label class="form-label" for="passportNumber">Sổ hộ chiếu (Không có ghi 'Không')</label>
-                <input type="text" id="passportNumber" name="passportNumber" class="form-control" value="{{population.passport_number}}" required/>
+                <input type="text" id="passportNumber" name="passportNumber" class="form-control" value="{{population.passport_number}}" readonly/>
             </div>
 
             <div class="form-label mb-4">
-                <label class="form-label" for="householdId">Mã hộ khẩu * (Chỉnh sửa qua quản lý hộ khẩu)</label>
+                <label class="form-label" for="householdId">Mã hộ khẩu * (Thêm qua quản lý hộ khẩu)</label>
                 <input type="text" id="householdId" name="passportNumber" class="form-control" value="{{ population.household_id }}" readonly/>
             </div>
         </div>
 
         <div class="form-label mb-4" style="text-align: center;">
-            <button type="submit" class="btn btn-outline-primary btn-rounded">Lưu thay đổi</button>
+            <a href="{{ url_for('population.layout') }}">
+                <button type="button" class="btn btn-outline-primary btn-rounded">Quay lại quản lý nhân khẩu</button>
+            </a>
         </div>
 
     </form>

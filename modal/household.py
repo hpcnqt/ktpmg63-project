@@ -55,7 +55,7 @@ def find_by_id(id):
 
 def update(household):
     try:
-        print(household.id, 'household')
+        # print(household.id, 'household')
 
         session = Session()
         result = session.query(Household).filter(Household.id == household.id).first()

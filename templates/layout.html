@@ -65,10 +65,7 @@
 								<a class="dropdown-item" href="{{ url_for('household.add') }}">Hộ khẩu mới</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#">Nhân khẩu mới</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="#">Tạm trú tạm vắng</a>
+								<a class="dropdown-item" href="{{ url_for('population.add') }}">Nhân khẩu mới</a>
 							</li>
 						</ul>
 					</li>
@@ -92,7 +89,7 @@
 							<a class="dropdown-item" href="#">Hồ sơ cá nhân</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="{{ url_for('authentication.logout') }}">Logout</a>
+							<a class="dropdown-item" href="{{ url_for('authentication.logout') }}">Đăng xuất</a>
 						</li>
 					</ul>
 				</div>

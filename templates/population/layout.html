@@ -23,12 +23,11 @@
     <table class="table align-middle mb-0 bg-white">
         <thead class="bg-light">
           <tr>
-            <th>Mã hộ khẩu</th>
-            <th>Họ và tên</th>
-            <th>Ngày sinh</th>
-            <th>Nguyên quán</th>
-              <th>Địa chỉ</th>
-            <th>Hành động</th>
+                <th>Mã nhân khẩu</th>
+                <th>Họ và tên</th>
+                <th>Ngày sinh</th>
+                <th>Địa chỉ</th>
+                <th>Hành động</th>
           </tr>
         </thead>
         <tbody>
@@ -44,7 +43,12 @@
                 {{ populations[i].date_of_birth }}
             </td>
             <td>
-                {{ populations[i].household.house_number + ', ' + populations[i].household.street_hamlet + ', ' + populations[i].household.commune_ward }}
+                {% if populations[i].household != None %}
+                    {{ populations[i].household.house_number + ', ' + populations[i].household.street_hamlet + ', ' + populations[i].household.commune_ward }}
+                {% endif %}
+                {% if populations[i].household == None %}
+
+                {% endif %}
             </td>
             <td>
                 <a href="{{ url_for('population.edit', id=populations[i].id) }}">
